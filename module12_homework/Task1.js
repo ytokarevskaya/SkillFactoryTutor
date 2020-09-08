@@ -1,3 +1,21 @@
+/*
+let person = {
+    age : 27,
+    city : "orsk",
+    name : "George"
+};
+
+const student = Object.create(person);
+
+student.heigth = 30;
+
+for (let prop in student) {
+    if(student.hasOwnProperty(prop)) {
+        console.log(prop, student[prop]);
+    }
+}
+*/
+
 let userValue = prompt("");
 
 
@@ -8,4 +26,4 @@ if(isNaN(userValue) || userValue == null) {
 } else {
     console.log("Упс, кажется, вы ошиблись");
 }
-
+2
