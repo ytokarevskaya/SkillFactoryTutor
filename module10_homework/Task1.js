@@ -1,4 +1,4 @@
-var userValue = prompt("");
+let userValue = prompt("");
 
 if(isNaN(userValue)) {
     console.log("Упс, кажется, вы ошиблись");
