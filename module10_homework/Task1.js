@@ -1,5 +1,4 @@
-let userValue = prompt("");
-
+let userValue = prompt("Введите значение");
 
 if(isNaN(userValue) || userValue == null) {
     console.log("Упс, кажется, вы ошиблись");
@@ -8,4 +7,3 @@ if(isNaN(userValue) || userValue == null) {
 } else {
     console.log("Упс, кажется, вы ошиблись");
 }
-
