@@ -1,39 +1,39 @@
-function ElectricalAppliances(type, model, amperage) {
-    this.type = type;
+
+
+function ElectricalAppliances(category, model, amperage) {
+    this.category = category;
     this.model = model;
     this.amperage = amperage;
     statusOnOff = false;
-    this.defectFactor = +Math.random(); //Фактор брака. Если defectFactor > 1, то техника неисправна; 0.1 - один щёлчок Вкл/Выкл;
-    this.switchOnOff = function() {
-        if(this.defectFactor < 1) {
+    this.defectFactor = Math.floor(Math.random()*11)*10; //Добавим фактор брака: 10% вероятность, что техника не включится, или не будет работать одна из функций;
+    this.switchOnOff = function() { 
+        if(this.defectFactor != 100) {
             if(statusOnOff == false) {
-                console.log(`${model} включен`);
+                console.log(`${this.model} включен`);
                 statusOnOff = true;
-                this.defectFactor += 0.1;
-                console.log(`Потребляемая мощность ${amperage*220} ватт`);
+                console.log(`Потребляемая мощность ${this.amperage*220} ватт`);
             } else {
-                console.log(`${model} выключен`);
+                console.log(`${this.model} выключен`);
                 statusOnOff = false;
-                this.defectFactor += 0.1;
+    
             } 
         } else {
             console.log(`${model} не работает...\n*Идёт дым*`);
         }
-        console.log(this.defectFactor.toFixed(1));
-    };
+    }
 }
 
 let iron = new ElectricalAppliances("Товары для дома", "Утюг Zanussi", 4.5),
     washer = new ElectricalAppliances("Товары для дома", "Стиральная машина LG", 5),
-    //refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2),
+    refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2),
     microwave = new ElectricalAppliances("Товары для кухни", "Микроволновка Braun", 4.7);
 
-let refrigerator = new iron()
+function funcStorageApp () {
 
-console.log(refrigerator)
+}
 
-microwave.heatFood = function (time = 15) { //время подогрева пищи (в сек.)
-    if(statusOnOff && this.defectFactor < 0.9) {
+microwave.heatFood = function (time = 10) { //время подогрева пищи (в сек.)
+    if(statusOnOff) {
         function timeOut() {
             time -= 1;
             time*1000-1000 >= 0 ? console.log(time) : console.log("*Дзыынь* Еда готова!");
@@ -46,9 +46,5 @@ microwave.heatFood = function (time = 15) { //время подогрева пи
 //Тест на работоспособность техники
 console.log(microwave);
 
-microwave.switchOnOff();
-microwave.switchOnOff();
-microwave.switchOnOff();
+microwave.switchOnOff()
 microwave.heatFood(3);
-
-
