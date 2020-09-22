@@ -1,5 +1,3 @@
-
-
 function ElectricalAppliances(category, model, amperage) {
     this.category = category;
     this.model = model;
@@ -15,7 +13,6 @@ function ElectricalAppliances(category, model, amperage) {
             } else {
                 console.log(`${this.model} выключен`);
                 statusOnOff = false;
-    
             } 
         } else {
             console.log(`${model} не работает...\n*Идёт дым*`);

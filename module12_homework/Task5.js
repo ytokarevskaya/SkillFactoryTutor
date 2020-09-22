@@ -1,32 +1,33 @@
-function ElectricalAppliances(category, model, amperage) {
-    this.category = category;
-    this.model = model;
-    this.amperage = amperage;
-    statusOnOff = false;
-    this.open = false;
-}
-
-ElectricalAppliances.prototype.switchOnOff = function () { //вкл/выкл и показатель потребляемой мощности
-    if(statusOnOff == false) {
-        console.log(`${this.model} включен`);
-        statusOnOff = true;
-        console.log(`Потребляемая мощность ${this.amperage*220} ватт`);
-    } else {
-        statusOnOff = false;
-        console.log(`${this.model} выключен`);
-        console.log(`Потребляемая мощность 0 ватт`);
-    }
-};
-
-ElectricalAppliances.prototype.openDoors = function () {
-    if(this.open == false) {
-        console.log(`${this.model} открыт`);
-        this.open = true;
-    } else {
-        console.log(`${this.model} закрыт`);
+class ElectricalAppliances {
+    constructor(category, model, amperage) {
+        this.category = category;
+        this.model = model;
+        this.amperage = amperage;
+        this.statusOnOff = false;
         this.open = false;
     }
-};
+    switchOnOff() {
+        if(this.statusOnOff == false) {
+            console.log(`${this.model} включен`);
+            this.statusOnOff = true;
+            console.log(`Потребляемая мощность ${this.amperage*220} ватт`);
+        } else {
+            this.statusOnOff = false;
+            console.log(`${this.model} выключен`);
+            console.log(`Потребляемая мощность 0 ватт`);
+        }
+    }
+    openDoors() {
+        if(this.open == false) {
+            console.log(`${this.model} открыт`);
+            this.open = true;
+        } else {
+            console.log(`${this.model} закрыт`);
+            this.open = false;
+        }
+    }
+}
+
 
 const refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2),
     microwave = new ElectricalAppliances("Товары для кухни", "Микроволновка Braun", 0);
@@ -80,10 +81,9 @@ refrigerator.addFood("Ананасы");
 refrigerator.switchOnOff();
 */
 
-
 let intId;
 microwave.heatFood = function (time, food = "Пустая микроволновка") { //время подогрева пищи (в сек.)
-    if(statusOnOff) {
+    if(microwave.statusOnOff) {
         if(microwave.open) {
         function timeOut() {
             time -= 1;
@@ -96,7 +96,7 @@ microwave.heatFood = function (time, food = "Пустая микроволнов
 };
 
 //Тест микроволновки
-/*
+
 microwave.switchOnOff();
 microwave.openDoors();
 microwave.heatFood(10); //на 10 сек
@@ -104,5 +104,6 @@ setTimeout(clearInterval,3000,intId); //но вдруг кое-что замеч
 setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
 setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
 setTimeout(() => {microwave.switchOnOff()}, 15000);
-*/
+
+
 
