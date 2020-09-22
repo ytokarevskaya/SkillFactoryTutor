@@ -2,17 +2,17 @@ function ElectricalAppliances(category, model, amperage) {
     this.category = category;
     this.model = model;
     this.amperage = amperage;
-    statusOnOff = false;
+    this.statusOnOff = false;
     this.open = false;
 }
 
 ElectricalAppliances.prototype.switchOnOff = function () { //вкл/выкл и показатель потребляемой мощности
     if(statusOnOff == false) {
         console.log(`${this.model} включен`);
-        statusOnOff = true;
+        this.statusOnOff = true;
         console.log(`Потребляемая мощность ${this.amperage*220} ватт`);
     } else {
-        statusOnOff = false;
+        this.statusOnOff = false;
         console.log(`${this.model} выключен`);
         console.log(`Потребляемая мощность 0 ватт`);
     }
@@ -80,10 +80,9 @@ refrigerator.addFood("Ананасы");
 refrigerator.switchOnOff();
 */
 
-
 let intId;
 microwave.heatFood = function (time, food = "Пустая микроволновка") { //время подогрева пищи (в сек.)
-    if(statusOnOff) {
+    if(this.statusOnOff) {
         if(microwave.open) {
         function timeOut() {
             time -= 1;

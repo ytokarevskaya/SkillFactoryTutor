@@ -28,44 +28,64 @@ class ElectricalAppliances {
     }
 }
 
-
-const refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2),
-    microwave = new ElectricalAppliances("Товары для кухни", "Микроволновка Braun", 0);
-
-refrigerator.storageForFood = 100; //Холодильник пуст на 100%
-refrigerator.food = new Map(); //Массив продуктов в холодильнике
-
-//Добавить продукты в холодильник
-refrigerator.addFood = function (food) {
-    if(refrigerator.open) {
-        if(refrigerator.storageForFood >= 0) {
-            let sizeFood = Math.round((Math.random(1)+0.1)*30); //Размер пищи, допустим, произвольный
-            refrigerator.food.set(food,sizeFood);
-            refrigerator.storageForFood -= sizeFood;
-            console.log(`В ${refrigerator.model} добавлено "${food}"`);
-        } else {
-            console.log(`${refrigerator.model} переполнен`);
-        }
-    } else {
-        console.log(`${refrigerator.model} сначала бы не помешало открыть`);
+class Refrigerators extends ElectricalAppliances {
+    constructor(category,model,amperage) {
+        super(category,model,amperage);
+        this.storageForFood = 100; //Холодильник пуст на 100%
+        this.food = new Map(); //Массив продуктов в холодильнике
     }
-};
+    addFood(food) { //Добавить продукты в холодильник
+        if(this.open) {
+            if(this.storageForFood >= 0) {
+                let sizeFood = Math.round((Math.random(1)+0.1)*30); //Размер пищи, допустим, произвольный
+                this.food.set(food,sizeFood);
+                this.storageForFood -= sizeFood;
+                console.log(`В ${this.model} добавлено "${food}"`);
+            } else {
+                console.log(`${this.model} переполнен`);
+            }
+        } else {
+            console.log(`${this.model} сначала бы не помешало открыть`);
+        }
+    }
+    takeFood(food) { //Взять продукты из холодильника
+        this.food.forEach((sizeFood,name) => {
+            if(name == food) {
+                this.food.delete(name);
+                console.log(`Из холодильника взято "${name}"`);
+                this.storageForFood += sizeFood;
+            } 
+        });
+    }
+}
 
-//Взять продукты из холодильника
-refrigerator.takeFood = function (food)  {
-     refrigerator.food.forEach((sizeFood,name) => {
-        if(name == food) {
-            refrigerator.food.delete(name);
-            console.log(`Из холодильника взято "${name}"`);
-            refrigerator.storageForFood += sizeFood;
-        } 
-    });
-};
+let intId;
+
+class Microwaves extends ElectricalAppliances {
+    constructor(bookOfRecipes,category,model,amperage) {
+        super(category,model,amperage);
+        this.bookOfRecipes = bookOfRecipes;
+    }
+    heatFood(time, food="Пустая микроволновка") {
+        if(microwave.statusOnOff) {
+            if(microwave.open) {
+            function timeOut() {
+                time -= 1;
+                time*1000-1000 >= 0 ? console.log(time,`Потребляемая мощность ≈ 1300 ватт`) : console.log(`*Дзыынь* Блюдо "${food}" готово!`);
+            }
+            intId = setInterval(timeOut,1000);
+            setTimeout(clearInterval,time*1000,intId);
+        }
+    } 
+    }
+}
+
+const refrigerator = new Refrigerators("Товары для кухни", "Холодильник Samsung", 2),
+    microwave = new Microwaves(true,"Товары для кухни", "Микроволновка Braun", 0);
 
 //Тест холодильника
 /*
 refrigerator.switchOnOff();
-
 refrigerator.addFood("Макароны с курицей");
 refrigerator.openDoors();
 refrigerator.addFood("Макароны с курицей");
@@ -77,26 +97,11 @@ refrigerator.addFood("Салат под шубой");
 refrigerator.addFood("Борщ");
 refrigerator.addFood("Картофель");
 refrigerator.addFood("Ананасы");
-
 refrigerator.switchOnOff();
 */
 
-let intId;
-microwave.heatFood = function (time, food = "Пустая микроволновка") { //время подогрева пищи (в сек.)
-    if(microwave.statusOnOff) {
-        if(microwave.open) {
-        function timeOut() {
-            time -= 1;
-            time*1000-1000 >= 0 ? console.log(time,`Потребляемая мощность ≈ 1300 ватт`) : console.log(`*Дзыынь* Блюдо "${food}" готово!`);
-        }
-        intId = setInterval(timeOut,1000);
-        setTimeout(clearInterval,time*1000,intId);
-    }
-} 
-};
-
 //Тест микроволновки
-
+/*
 microwave.switchOnOff();
 microwave.openDoors();
 microwave.heatFood(10); //на 10 сек
@@ -104,6 +109,6 @@ setTimeout(clearInterval,3000,intId); //но вдруг кое-что замеч
 setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
 setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
 setTimeout(() => {microwave.switchOnOff()}, 15000);
-
+*/
 
 
