@@ -1,8 +1,9 @@
 class ElectricalAppliances {
-    constructor(category, model, amperage) {
+    constructor(category, model, amperage, color) {
         this.category = category;
         this.model = model;
         this.amperage = amperage;
+        this.color = color;
         this.statusOnOff = false;
         this.open = false;
     }
@@ -29,9 +30,9 @@ class ElectricalAppliances {
 }
 
 class Refrigerators extends ElectricalAppliances {
-    constructor(category,model,amperage) {
-        super(category,model,amperage);
-        this.storageForFood = 100; //Холодильник пуст на 100%
+    constructor(storageForFood,category,model,amperage,color) {
+        super(category,model,amperage,color);
+        this.storageForFood = storageForFood; //Холодильник пуст на 100%
         this.food = new Map(); //Массив продуктов в холодильнике
     }
     addFood(food) { //Добавить продукты в холодильник
@@ -62,8 +63,8 @@ class Refrigerators extends ElectricalAppliances {
 let intId;
 
 class Microwaves extends ElectricalAppliances {
-    constructor(bookOfRecipes,category,model,amperage) {
-        super(category,model,amperage);
+    constructor(bookOfRecipes,category,model,amperage,color) {
+        super(category,model,amperage,color);
         this.bookOfRecipes = bookOfRecipes;
     }
     heatFood(time, food="Пустая микроволновка") {
@@ -80,8 +81,8 @@ class Microwaves extends ElectricalAppliances {
     }
 }
 
-const refrigerator = new Refrigerators("Товары для кухни", "Холодильник Samsung", 2),
-    microwave = new Microwaves(true,"Товары для кухни", "Микроволновка Braun", 0);
+const refrigerator = new Refrigerators(100, "Товары для кухни", "Холодильник Samsung", 2, "white"),
+    microwave = new Microwaves(true,"Товары для кухни", "Микроволновка Braun", 0, "black");
 
 //Тест холодильника
 /*
@@ -101,7 +102,7 @@ refrigerator.switchOnOff();
 */
 
 //Тест микроволновки
-/*
+
 microwave.switchOnOff();
 microwave.openDoors();
 microwave.heatFood(10); //на 10 сек
@@ -109,6 +110,6 @@ setTimeout(clearInterval,3000,intId); //но вдруг кое-что замеч
 setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
 setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
 setTimeout(() => {microwave.switchOnOff()}, 15000);
-*/
+
 
 

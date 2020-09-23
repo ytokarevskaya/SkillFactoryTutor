@@ -1,7 +1,8 @@
-function ElectricalAppliances(category, model, amperage) {
+function ElectricalAppliances(category, model, amperage, color) {
     this.category = category;
     this.model = model;
     this.amperage = amperage;
+    this.color = color;
     this.statusOnOff = false;
     this.open = false;
 }
@@ -28,8 +29,8 @@ ElectricalAppliances.prototype.openDoors = function () {
     }
 };
 
-const refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2),
-    microwave = new ElectricalAppliances("Товары для кухни", "Микроволновка Braun", 0);
+const refrigerator = new ElectricalAppliances("Товары для кухни", "Холодильник Samsung", 2, "white"),
+    microwave = new ElectricalAppliances("Товары для кухни", "Микроволновка Braun", 0, "black");
 
 refrigerator.storageForFood = 100; //Холодильник пуст на 100%
 refrigerator.food = new Map(); //Массив продуктов в холодильнике
@@ -81,6 +82,7 @@ refrigerator.switchOnOff();
 */
 
 let intId;
+microwave.bookOfRecipes = true;
 microwave.heatFood = function (time, food = "Пустая микроволновка") { //время подогрева пищи (в сек.)
     if(this.statusOnOff) {
         if(microwave.open) {
