@@ -3,17 +3,17 @@ function ElectricalAppliances(category, model, amperage, color) {
     this.model = model;
     this.amperage = amperage;
     this.color = color;
-    this.statusOnOff = false;
+    statusOnOff = false;
     this.open = false;
 }
 
 ElectricalAppliances.prototype.switchOnOff = function () { //вкл/выкл и показатель потребляемой мощности
     if(statusOnOff == false) {
         console.log(`${this.model} включен`);
-        this.statusOnOff = true;
+        statusOnOff = true;
         console.log(`Потребляемая мощность ${this.amperage*220} ватт`);
     } else {
-        this.statusOnOff = false;
+        statusOnOff = false;
         console.log(`${this.model} выключен`);
         console.log(`Потребляемая мощность 0 ватт`);
     }
@@ -63,28 +63,26 @@ refrigerator.takeFood = function (food)  {
 };
 
 //Тест холодильника
-/*
-refrigerator.switchOnOff();
 
-refrigerator.addFood("Макароны с курицей");
-refrigerator.openDoors();
-refrigerator.addFood("Макароны с курицей");
-refrigerator.addFood("Фондю");
-refrigerator.addFood("Дхансак с ягнёнком");
-refrigerator.addFood("Оливье");
-refrigerator.takeFood("Макароны с курицей");
-refrigerator.addFood("Салат под шубой");
-refrigerator.addFood("Борщ");
-refrigerator.addFood("Картофель");
-refrigerator.addFood("Ананасы");
+// refrigerator.switchOnOff();
+// refrigerator.addFood("Макароны с курицей");
+// refrigerator.openDoors();
+// refrigerator.addFood("Макароны с курицей");
+// refrigerator.addFood("Фондю");
+// refrigerator.addFood("Дхансак с ягнёнком");
+// refrigerator.addFood("Оливье");
+// refrigerator.takeFood("Макароны с курицей");
+// refrigerator.addFood("Салат под шубой");
+// refrigerator.addFood("Борщ");
+// refrigerator.addFood("Картофель");
+// refrigerator.addFood("Ананасы");
+// refrigerator.switchOnOff();
 
-refrigerator.switchOnOff();
-*/
 
 let intId;
 microwave.bookOfRecipes = true;
 microwave.heatFood = function (time, food = "Пустая микроволновка") { //время подогрева пищи (в сек.)
-    if(this.statusOnOff) {
+    if(statusOnOff) {
         if(microwave.open) {
         function timeOut() {
             time -= 1;
@@ -97,13 +95,13 @@ microwave.heatFood = function (time, food = "Пустая микроволнов
 };
 
 //Тест микроволновки
-/*
-microwave.switchOnOff();
-microwave.openDoors();
-microwave.heatFood(10); //на 10 сек
-setTimeout(clearInterval,3000,intId); //но вдруг кое-что замечаем
-setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
-setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
-setTimeout(() => {microwave.switchOnOff()}, 15000);
-*/
+
+// microwave.switchOnOff();
+// microwave.openDoors();
+// microwave.heatFood(10); //на 10 сек
+// setTimeout(clearInterval,3000,intId); //но вдруг кое-что замечаем
+// setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
+// setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
+// setTimeout(() => {microwave.switchOnOff()}, 15000);
+
 

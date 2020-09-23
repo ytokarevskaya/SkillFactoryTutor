@@ -35,7 +35,6 @@ function displayResult(apiData) {
             src="${item.download_url}"
             class="card-image"
           />
-          <p>${item.author}</p>
         </div>
       `;
       cards = cards + cardBlock;
@@ -43,15 +42,15 @@ function displayResult(apiData) {
     
     // console.log('end cards', cards);
       
-    resultNode.innerHTML = cards;
+    resultNode.innerHTML += cards;
   }
   
   // Вешаем обработчик на кнопку для запроса
   btnNode.addEventListener('click', () => {
     
-    let userValue = document.querySelector("input").value;
-    if(userValue > 0 && userValue <=10) {
-        useRequest('https://picsum.photos/v2/list/?limit=' + userValue, displayResult);
+    const value = document.querySelector("input").value;
+    if(value > 0 && value <=10) {
+        useRequest('https://picsum.photos/v2/list/?limit=' + value, displayResult);
     } else {
         document.querySelector('.j-result').textContent = "Число вне диапазона от 1 до 10";
     }

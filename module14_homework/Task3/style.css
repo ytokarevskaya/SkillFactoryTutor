@@ -1,4 +1,20 @@
+.conteiner {
+        display: flex;
+        flex-direction: column;
+        
+}
+
+.form-block {
+        display: flex;
+        justify-content: center;
+}
+
+.j-result {
+        display: flex;
+        flex-direction: column;
+
+}
+
 .card-image {
         width: 200px;
-        height: 150px;
 }

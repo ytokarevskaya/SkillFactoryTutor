@@ -85,31 +85,31 @@ const refrigerator = new Refrigerators(100, "Товары для кухни", "�
     microwave = new Microwaves(true,"Товары для кухни", "Микроволновка Braun", 0, "black");
 
 //Тест холодильника
-/*
-refrigerator.switchOnOff();
-refrigerator.addFood("Макароны с курицей");
-refrigerator.openDoors();
-refrigerator.addFood("Макароны с курицей");
-refrigerator.addFood("Фондю");
-refrigerator.addFood("Дхансак с ягнёнком");
-refrigerator.addFood("Оливье");
-refrigerator.takeFood("Макароны с курицей");
-refrigerator.addFood("Салат под шубой");
-refrigerator.addFood("Борщ");
-refrigerator.addFood("Картофель");
-refrigerator.addFood("Ананасы");
-refrigerator.switchOnOff();
-*/
+
+// refrigerator.switchOnOff();
+// refrigerator.addFood("Макароны с курицей");
+// refrigerator.openDoors();
+// refrigerator.addFood("Макароны с курицей");
+// refrigerator.addFood("Фондю");
+// refrigerator.addFood("Дхансак с ягнёнком");
+// refrigerator.addFood("Оливье");
+// refrigerator.takeFood("Макароны с курицей");
+// refrigerator.addFood("Салат под шубой");
+// refrigerator.addFood("Борщ");
+// refrigerator.addFood("Картофель");
+// refrigerator.addFood("Ананасы");
+// refrigerator.switchOnOff();
+
 
 //Тест микроволновки
 
-microwave.switchOnOff();
-microwave.openDoors();
-microwave.heatFood(10); //на 10 сек
-setTimeout(clearInterval,3000,intId); //но вдруг кое-что замечаем
-setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
-setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
-setTimeout(() => {microwave.switchOnOff()}, 15000);
+// microwave.switchOnOff();
+// microwave.openDoors();
+// microwave.heatFood(10); //на 10 сек
+// setTimeout(clearInterval,3000,intId); //но вдруг кое-что замечаем
+// setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
+// setTimeout(microwave.heatFood,4000,10,"Макароны с курицей");//вот так-то лучше
+// setTimeout(() => {microwave.switchOnOff()}, 15000);
 
 
 
