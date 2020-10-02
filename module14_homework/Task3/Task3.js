@@ -12,37 +12,23 @@ function useRequest(url, callback) {
         }
       }
     };
-    
+
     xhr.onerror = function() {
       console.log('Ошибка! Статус ответа: ', xhr.status);
     };
     
     xhr.send();
-  };
+  }
 
-const resultNode = document.querySelector('.j-result');
-// Ищем кнопку, по нажатии на которую будет запрос
-const btnNode = document.querySelector('.button');
+const resultNode = document.querySelector('.j-result'),
+      btnNode = document.querySelector('.button');
 
 function displayResult(apiData) {
     let cards = '';
-    // console.log('start cards', cards);
-    
     apiData.forEach(item => {
-      const cardBlock = `
-        <div class="card">
-          <img
-            src="${item.download_url}"
-            class="card-image"
-          />
-        </div>
-      `;
-      cards = cards + cardBlock;
+      cards += `<div class="card"><img src="${item.download_url}" class="card-image"/></div>`;
     });
-    
-    // console.log('end cards', cards);
-      
-    resultNode.innerHTML += cards;
+    resultNode.innerHTML = cards;
   }
   
   // Вешаем обработчик на кнопку для запроса

@@ -95,11 +95,13 @@ microwave.heatFood = function (time, food = "Пустая микроволнов
 };
 
 //Тест микроволновки
+let goMicro = function() {
+    microwave.switchOnOff();
+    microwave.openDoors();
+    console.log("dddd")
+};
+goMicro();
 
-
-
-microwave.switchOnOff();
-microwave.openDoors();
 microwave.heatFood(10); //на 10 сек
 setTimeout(clearInterval,3000,intId); //но вдруг кое-что замечаем
 setTimeout(console.log,3500,"Стоп! Микроволновка же пуста");
