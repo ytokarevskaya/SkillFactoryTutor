@@ -1,0 +1,26 @@
+.conteiner {
+        display: flex;
+        justify-content: center;
+}
+
+.form-block {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1%;
+}
+
+.j-result {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        flex-wrap: wrap;
+        justify-content: center;
+}
+
+.card {
+        display: flex;
+}
+
+.card-image {
+        width: 300px;
+}

@@ -1,0 +1,30 @@
+* 
+{
+     background-color: black;
+     overflow: hidden;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.slider {
+    width: 10%;
+    height: 1025px;
+    
+    background: linear-gradient(to right, #4d4d4d, #222222);
+    color: #f7f7f7;
+  
+    opacity: 30%;
+    margin: 0% 3% 3%;
+}
+
+.slider:hover {
+    opacity: 50%;
+}
+
+.photo {
+    height: 1025px;
+    color: white;
+}
