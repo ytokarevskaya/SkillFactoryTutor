@@ -11,7 +11,7 @@ const btnGeo = document.querySelector(".geo");
 let websocket;
 
 function writeToScreen(message) {
-  output.innerHTML += `<p><div class="chat-text">${message}</div></p>`;
+  output.innerHTML += `<div class="chat-sent">${message}</div>`;
 }
 
 btnOpen.addEventListener('click', () => {
@@ -28,9 +28,9 @@ btnOpen.addEventListener('click', () => {
   };
   websocket.onmessage = function(evt) {
     if(evt.data.indexOf(`https://www.openstreetmap.org/#map=18/`) != -1) {
-      output.innerHTML += `<div class="serv-message"><p><div class="chat-text"><a href="` + evt.data + `">Ваша геолокация</a></div></p></div>`;
+      output.innerHTML += `<div class="chat-recieved"><a href="` + evt.data + `">Ваша геолокация</a></div>`;
     } else {
-      output.innerHTML += '<div class="serv-message"><p><div class="chat-text">' + evt.data + '</div></p></div>';
+      output.innerHTML += '<div class="chat-recieved">' + evt.data + '</div>';
     }
   };
   websocket.onerror = function(evt) {
@@ -51,6 +51,15 @@ btnSend.addEventListener('click', () => {
   websocket.send(message);
 });
 
+btnGeo.addEventListener('click', () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { coords } = position;
+      websocket.send(`https://www.openstreetmap.org/#map=18/${coords.latitude}/${coords.longitude}`);
+    });
+  }
+});
+
 chatInput.addEventListener("keydown", function(event) {
   if(chatInput.value == "") return;
   if(event.keyCode == 13) {
@@ -61,12 +70,5 @@ chatInput.addEventListener("keydown", function(event) {
   }
 });
 
-btnGeo.addEventListener('click', () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { coords } = position;
-      websocket.send(`https://www.openstreetmap.org/#map=18/${coords.latitude}/${coords.longitude}`);
-    });
-  }
-});
+
 

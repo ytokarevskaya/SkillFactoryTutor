@@ -55,32 +55,37 @@
 }
 
 .chat {
-  margin-bottom: 1%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+
+  margin-top: 1%;
   width: 95%;
   height: 99%;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-p {
-  color: black;
-  margin-bottom: -1%;
-}
-
-.chat-text {
-  display: inline-block;
+.chat-sent {
+  align-self: flex-start;
+  max-width: 80%;
   border: 5px solid #bad7ec; 
   border-radius: 15px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size:100%;
   padding: 2%;
-  max-width: 80%;
-  text-align: left;
+  margin-top: 1%;
 }
 
-.serv-message {
-  display: flow-root;
-  text-align: right;
+.chat-recieved {
+  align-self: flex-end;
+  max-width: 80%;
+  border: 5px solid #bad7ec; 
+  border-radius: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:100%;
+  padding: 2%;
+  margin-top: 1%;
 }
 
 .serv-block {
