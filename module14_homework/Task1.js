@@ -22,24 +22,22 @@ const xmlString = `
 `;
 
 const xmlDOM = parser.parseFromString(xmlString, "text/xml");
-
-const firstName1 = xmlDOM.querySelectorAll('first')[0].textContent,
-    secondName1 = xmlDOM.querySelectorAll('second')[0].textContent,
-    age1 = xmlDOM.querySelectorAll('age')[0].textContent,
-    prof1 =  xmlDOM.querySelectorAll('prof')[0].textContent,
-    lang1 = xmlDOM.querySelectorAll('name')[0].getAttribute("lang");
-
-const firstName2 = xmlDOM.querySelectorAll('first')[1].textContent,
-    secondName2 = xmlDOM.querySelectorAll('second')[1].textContent,
-    age2 = xmlDOM.querySelectorAll('age')[1].textContent,
-    prof2 =  xmlDOM.querySelectorAll('prof')[1].textContent,
-    lang2 = xmlDOM.querySelectorAll('name')[1].getAttribute("lang");
-
+const studentNodes = xmlDOM.querySelectorAll('student');
 const result = {
-    list: [
-        {name: `${firstName1} ${secondName1}`, age: +age1, prof: prof1, lang: lang1},
-        {name: `${firstName2} ${secondName2}`, age: +age2, prof: prof2, lang: lang2},
-    ]
+  list: []
 };
 
+studentNodes.forEach(student => {
+  const firstName = xmlDOM.querySelectorAll('first')[0].textContent,
+    secondName = xmlDOM.querySelectorAll('second')[0].textContent,
+    age = xmlDOM.querySelectorAll('age')[0].textContent,
+    prof =  xmlDOM.querySelectorAll('prof')[0].textContent,
+    lang = xmlDOM.querySelectorAll('name')[0].getAttribute("lang");
+
+  result.list.push({name: `${firstName} ${secondName}`, age: +age, prof: prof, lang: lang});
+});
+
 console.log(result);
+
+// Решение верное в условиях данной конкретной задачи, но не универсальное. В большинстве реальных задач вы не будете знать точное количество узлов, которые нужно обработать, поэтому лучше было бы использовать метод querySelectorAll и цикл, чтобы обработать все доступные узлы вне зависимости от их количества.
+// Выше исправила на более правильный вариант

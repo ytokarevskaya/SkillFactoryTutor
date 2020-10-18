@@ -17,16 +17,18 @@ const jsonString = `
 
 const data = JSON.parse(jsonString);
 
-const name1 = data.list[0].name,
-   age1 = data.list[0].age,
-   prof1 = data.list[0].prof;
+// const name1 = data.list[0].name,
+//    age1 = data.list[0].age,
+//    prof1 = data.list[0].prof;
 
-const name2 = data.list[1].name,
-   age2 = data.list[1].age,
-   prof2 = data.list[1].prof;
+// const name2 = data.list[1].name,
+//    age2 = data.list[1].age,
+//    prof2 = data.list[1].prof;
 
-const result = 
-    [{name: name1, age: +age1, prof: prof1},
-    {name: name2, age: +age2, prof: prof2}];
+// const result = 
+//     [{name: name1, age: +age1, prof: prof1},
+//     {name: name2, age: +age2, prof: prof2}];
 
-console.log(result);
+console.log(data);
+
+// Решение верное, но вы прописали очень много лишних действий. Метод JSON.parse уже создает корректный Javascript-объект из JSON, поэтому нет необходимости записывать свойства по отдельности, как при работе с XML. Выше закомментировала лишние строчки кода
